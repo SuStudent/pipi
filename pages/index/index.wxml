@@ -1,0 +1,24 @@
+<!--index.wxml-->
+<view class="container">
+  <view>
+    <van-search value="{{ value }}" placeholder="请输入房间名称" />
+
+    <van-cell-group title="初级房间">
+      <van-cell icon="gem-o" title="房间名称" value="2.3Km" size="large" label="小姐姐速来" is-link/>
+      <van-cell icon="gem-o" title="房间名称" value="2.3Km" size="large" label="小姐姐速来" is-link />
+      <van-cell icon="gem-o" title="房间名称" value="2.3Km" size="large" label="小姐姐速来" is-link />
+    </van-cell-group>
+
+    <van-cell-group title="中级房间">
+      <van-cell icon="gem-o" title="房间名称" value="2.3Km" size="large" label="小姐姐速来" is-link/>
+      <van-cell icon="gem-o" title="房间名称" value="2.3Km" size="large" label="小姐姐速来" is-link />
+      <van-cell icon="gem-o" title="房间名称" value="2.3Km" size="large" label="小姐姐速来" is-link />
+    </van-cell-group>
+
+     <van-cell-group title="高级房间">
+      <van-cell icon="gem-o" title="房间名称" value="2.3Km" size="large" label="小姐姐速来" is-link/>
+      <van-cell icon="gem-o" title="房间名称" value="2.3Km" size="large" label="小姐姐速来" is-link />
+      <van-cell icon="gem-o" title="房间名称" value="2.3Km" size="large" label="小姐姐速来" is-link />
+    </van-cell-group>
+  </view>
+</view>
