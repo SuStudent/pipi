@@ -1,12 +1,18 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/mine/mine"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将为你提供更好的体验"
+    }
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "皮皮猿",
     "navigationBarTextStyle": "black"
   },
   "style": "v2",

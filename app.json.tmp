@@ -1,0 +1,17 @@
+// "tabBar": {
+//   "selectedColor": "#1296db",  
+  // "list": [
+  //   {
+  //     "pagePath": "pages/index/index",
+  //     "text": "房间",
+  //     "iconPath": "icons/room.png",
+  //     "selectedIconPath": "icons/select-room.png"
+  //   },
+  //   {
+  //     "pagePath": "pages/mine/mine",
+  //     "text": "我的",
+  //     "iconPath": "icons/mine.png",
+  //     "selectedIconPath": "icons/select-mine.png"
+  //   }
+  // ]
+// },
