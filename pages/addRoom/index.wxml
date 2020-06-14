@@ -1,0 +1,13 @@
+<!--pages/addRoom/index.wxml-->
+<view>
+	<van-cell-group title="新增房间">
+		<van-field size="large" value="{{ name }}" required clearable label="房间名称" placeholder="房间名称" data-prop="name" bind:change="onValueChange" error="{{ nameError }}"/>
+		<van-field size="large" value="{{ description }}" required clearable label="房间描述" placeholder="房间描述" data-prop="description" bind:change="onValueChange" error="{{ descriptionError }}"/>
+		<van-field size="large" value="{{ password }}" clearable label="房间密码" placeholder="房间密码" data-prop="password"  bind:change="onValueChange"/>
+	</van-cell-group>
+	<van-row custom-class="row-class">
+		<van-col span="20" offset="2">
+			<van-button type="info" custom-class="btn-class" block bind:click="save" loading="{{btnLoading}}" loading-text="加载中...">保存</van-button>
+		</van-col>
+	</van-row>
+</view>

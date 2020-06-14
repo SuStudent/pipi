@@ -1,28 +1,18 @@
 <!--index.wxml-->
 <view class="container">
-  <view>
-    <van-search value="{{ value }}" placeholder="请输入房间名称" />
-      <van-cell-group title="初级房间">
-        <van-cell icon="gem-o" title="房间名称" value="2.3Km" size="large" label="小姐姐速来" is-link/>
-        <van-cell icon="gem-o" title="房间名称" value="2.3Km" size="large" label="小姐姐速来" is-link />
-        <van-cell icon="gem-o" title="房间名称" value="2.3Km" size="large" label="小姐姐速来" is-link />
-      </van-cell-group>
+	<view>
+		<van-search value="{{ keywords }}" placeholder="请输入房间名称" />
 
-    <van-cell-group title="中级房间">
-      <van-cell icon="gem-o" title="房间名称" value="2.3Km" size="large" label="小姐姐速来" is-link/>
-      <van-cell icon="gem-o" title="房间名称" value="2.3Km" size="large" label="小姐姐速来" is-link />
-      <van-cell icon="gem-o" title="房间名称" value="2.3Km" size="large" label="小姐姐速来" is-link />
-    </van-cell-group>
-
-     <van-cell-group title="高级房间">
-      <van-cell icon="gem-o" title="房间名称" value="2.3Km" size="large" label="小姐姐速来" is-link/>
-      <van-cell icon="gem-o" title="房间名称" value="2.3Km" size="large" label="小姐姐速来" is-link />
-      <van-cell icon="gem-o" title="房间名称" value="2.3Km" size="large" label="小姐姐速来" is-link />
-    </van-cell-group>
-  </view>
-  <view class="round-click">
-       <van-button round type="info" custom-style="height:60px;width:60px">
-          <span style="font-size: 28px">+</span>
-       </van-button>
-    </view>
+		<van-cell-group>
+		<view wx:for-item="var" wx:for="{{rooms}}">
+			<van-cell wx:if="{{!!var.distance}}" icon="gem-o" title="{{var.name}}" value="{{var.distance + 'Km'}}" size="large" label="{{var.description}}" is-link />
+			<van-cell wx:else icon="gem-o" title="{{var.name}}" size="large" label="{{var.description}}" is-link />
+		</view>	
+		</van-cell-group>
+	</view>
+	<view class="round-click">
+		<van-button round type="info" bind:click="addRoom" custom-style="height:60px;width:60px">
+			<span style="font-size: 28px">+</span>
+		</van-button>
+	</view>
 </view>

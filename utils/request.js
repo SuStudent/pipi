@@ -49,6 +49,7 @@ function request(url, method, data, header) {
             const retryOriginalRequest = new Promise(() => {
               // 放入队列中
               addSubscriber(async () => {
+                header["Authorization"] = ''
                 let resData = await originalRequest(url, header, data, method)
                 resolve(resData)
               })
@@ -190,7 +191,7 @@ function get({
   if (data && data != {}) {
     url = url.indexOf('?') != -1 ? url : url + '?'
     for (let k in data) {
-      url += `${k}=${data[k]}`
+      url += `&${k}=${data[k]}`
     }
   }
   return request(url, "GET", {}, header);
@@ -205,6 +206,7 @@ function post({
   data,
   header
 }) {
+  header = header || {}; 
   if (!header['content-type']) {
     header['content-type'] = 'application/json'
   }
