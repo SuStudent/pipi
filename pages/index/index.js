@@ -12,8 +12,28 @@ Page({
     longitude: "",
     pageNo: 1,
     rooms: [],
-    allLoad: false
+    allLoad: false,
+    userInfo: {},
+    hasUserInfo: false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    RoomNo: ''
   },
+
+  onShareAppMessage: function (res) {
+      var _this = this;
+      if(_this.data.RoomNo == ''){
+          _this.data.RoomNo = Math.floor(Math.random()*10000);
+      }
+
+      if (res.from === 'button') {
+          // 来自页面内转发按钮
+          console.log(res.target)
+      }
+      return {
+          path: '/pages/addRoom/index?RoomNo=' +  _this.data.RoomNo
+      }
+  },
+
   onReachBottom: function() {
     if(!this.data.allLoad) {
       this.setData({
