@@ -1,91 +1,38 @@
-import {
-  getRoomPage
-} from "../../apis/room"
-
 //index.js
 //获取应用实例
+import {generateUniqueStr} from "../../utils/util";
+import {login} from "../../utils/request";
+
 const app = getApp()
 Page({
   data: {
-    keywords: "",
-    latitude: "",
-    longitude: "",
-    pageNo: 1,
-    rooms: [],
-    allLoad: false,
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    RoomNo: ''
+    userInfo: null
   },
-
-  onShareAppMessage: function (res) {
-      var _this = this;
-      if(_this.data.RoomNo == ''){
-          _this.data.RoomNo = Math.floor(Math.random()*10000);
-      }
-
-      if (res.from === 'button') {
-          // 来自页面内转发按钮
-          console.log(res.target)
-      }
-      return {
-          path: '/pages/addRoom/index?RoomNo=' +  _this.data.RoomNo
-      }
-  },
-
-  onReachBottom: function() {
-    if(!this.data.allLoad) {
+  onLoad(query) {
+    if (app.globalData.userInfo) {
       this.setData({
-        pageNo: this.data.pageNo + 1
+        userInfo: app.globalData.userInfo
       })
-      this.getData()
+    } else{
+      app.userInfoReadyCallback = userInfo => {
+        this.setData({
+          userInfo: userInfo
+        })
+      }
     }
   },
-  onShow: function() {
-    let that = this
-    wx.getLocation({
-      type: 'wgs84',
-      success: (res) => {
-        var latitude = res.latitude
-        var longitude = res.longitude
-        that.setData({
-          latitude: latitude,
-          longitude: longitude,
-        })
-      },
-      complete: function() {
-        that.setData({
-          keywords: "",
-          pageNo: 1,
-          rooms: [],
-          allLoad: false
-        })
-        that.getData()
-      }
-    })
-  },
-  getData() {
-    wx.showLoading({
-      title: '加载中',
-    })
-    getRoomPage({
-      pageNo: this.data.pageNo,
-      pageSize: 15,
-      keywords: this.data.keywords,
-      latitude: this.data.latitude,
-      longitude: this.data.longitude
-    }).then(res => {
-      const {data} = res
-      const newData = this.data.rooms.concat(data.entities)
-      this.setData({
-        rooms: newData,
-        allLoad: data.pageNo == data.pageCount
+  onShareAppMessage: function (res) {
+    let roomNo = generateUniqueStr()
+    setTimeout(() => {
+      wx.navigateTo({
+        url: `/pages/room/room?roomNo=${roomNo}`
       })
-      wx.hideLoading()
-    }).catch(res => {
-      wx.hideLoading()
-    })
+    }, 1000);
+    return {
+      path: `/pages/room/room?roomNo=${roomNo}`,
+      title: 'I Love You',
+      imageUrl: '/icons/guo.jpg'
+    }
   },
   //事件处理函数
   bindViewTap: function() {
@@ -97,6 +44,9 @@ Page({
     wx.navigateTo({
       url: '../addRoom/index'
     })
+  },
+  bindGetUserInfo: function(res) {
+    login()
   },
   test() {
     app.globalData.vant.toast.loading({

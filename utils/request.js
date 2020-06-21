@@ -130,6 +130,7 @@ function login() {
   wx.getSetting({
     success: settingRes => {
       if (!settingRes.authSetting['scope.userInfo']) {
+        console.log("第一次登录，未点击授权")
         return;
       }
       wx.login({
@@ -217,5 +218,6 @@ module.exports = {
   apiHttp: apiHttp,
   socketHttp: socketHttp,
   get: get,
-  post: post
+  post: post,
+  login: login
 };

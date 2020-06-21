@@ -1,38 +1,9 @@
-.round-click{
-  height: 120rpx;
-  width: 120rpx;
-  border-radius: 100%;
-  position: fixed;
-  bottom: 150rpx;
-  right: 20rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9;
+.box-center{
+  margin: 0 auto;
+  display: table;
+  padding-top: 20rpx;
 }
-.round-click .btn{
-  font-size: 32rpx;
-  max-width: 80rpx;
-  color: #fff;
-  text-align: center;
-}
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 100px;
+button{
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
 }

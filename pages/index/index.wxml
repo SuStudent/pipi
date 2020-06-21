@@ -1,28 +1,16 @@
 <!--index.wxml-->
 <view class="container">
-	<!--<view>-->
-		<!--<van-search value="{{ keywords }}" placeholder="请输入房间名称" />-->
-
-		<!--<van-cell-group>-->
-		<!--<view wx:for-item="var" wx:for="{{rooms}}">-->
-			<!--<van-cell wx:if="{{!!var.distance}}" icon="gem-o" title="{{var.name}}" value="{{var.distance + 'Km'}}" size="large" label="{{var.description}}" is-link />-->
-			<!--<van-cell wx:else icon="gem-o" title="{{var.name}}" size="large" label="{{var.description}}" is-link />-->
-		<!--</view>	-->
-		<!--</van-cell-group>-->
-	<!--</view>-->
-	<!--<view class="round-click">-->
-		<!--<van-button round type="info" bind:click="addRoom" custom-style="height:60px;width:60px">-->
-			<!--<span style="font-size: 28px">+</span>-->
-		<!--</van-button>-->
-	<!--</view>-->
-	<view class="userinfo">
-		<button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-		<block wx:else>
-			<image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-			<text class="userinfo-nickname">{{userInfo.nickName}}</text>
-		</block>
+	<view class="box-center">
+		<van-image width="100" round height="100" src="{{userInfo.photo}}"/>
 	</view>
-	<view class="usermotto">
-		<button open-type='share'> 好友对战 </button>
+	<view class="box-center">
+		<view class="user-real-name text-center">{{userInfo.realName}}</view>
+	</view>
+	<view class="option">
+		<button wx:if="{{!userInfo}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" type="primary" plain>
+			授权登录
+		</button>
+		<van-button type="primary" block>块级元素</van-button>
+		<button open-type='share' type="primary" disabled="{{!userInfo}}">开始游戏</button>
 	</view>
 </view>

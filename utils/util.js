@@ -1,4 +1,4 @@
-const formatTime = date => {
+export const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
   const day = date.getDate()
@@ -9,17 +9,16 @@ const formatTime = date => {
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
 
-const formatNumber = n => {
+export const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
 
-const userInfoFormat = userInfoRes => {
+export const userInfoFormat = userInfoRes => {
   userInfoRes.rawData = JSON.parse(userInfoRes.rawData)
   return userInfoRes
 }
 
-module.exports = {
-  formatTime: formatTime,
-  userInfoFormat: userInfoFormat
+export function generateUniqueStr() {
+  return Number(Math.random().toString().substr(3, 12) + Date.now()).toString(36);
 }

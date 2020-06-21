@@ -1,18 +1,25 @@
-// pages/mine/mine.js
+// pages/room/room.js
+const app = getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
+    roomNo: '',
+    userInfo: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if(!options.roomNo) {
+      wx.reLaunch({url: '/pages/index/index'})
+    }
+    this.setData({
+      roomNo: options.roomNo,
+      userInfo: app.globalData.userInfo
+    })
   },
 
   /**
