@@ -10,7 +10,6 @@
 		<button wx:if="{{!userInfo}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" type="primary" plain>
 			授权登录
 		</button>
-		<van-button type="primary" block>块级元素</van-button>
 		<button open-type='share' type="primary" disabled="{{!userInfo}}">开始游戏</button>
 	</view>
 </view>
